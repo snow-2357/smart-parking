@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>iotSP</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        background-image: url("a.jpg");
+      }
+      .light-green {
+        background: #d4edda;
+      }
+      .light-red {
+        background: #f8d7da;
+      }
+      h1 {
+        padding: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <h1 style="text-align: center" class="mb-5">
+        <b>CIT E-PARKING SYSTEM</b>
+      </h1>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm mb-3">
+          <div class="card" id="p1">
+            <div class="card-body">
+              <h3 class="card-title" style="text-align: center">P1</h3>
+              <h5 style="text-align: center">free</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm mb-3">
+          <div class="card" id="p2">
+            <div class="card-body">
+              <h3 class="card-title" style="text-align: center">P2</h3>
+              <h5 style="text-align: center">free</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm mb-3">
+          <div class="card" id="p3">
+            <div class="card-body">
+              <h3 class="card-title" style="text-align: center">P3</h3>
+              <h5 style="text-align: center">free</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm mb-3">
+          <div class="card" id="p4">
+            <div class="card-body">
+              <h3 class="card-title" style="text-align: center">P4</h3>
+              <h5 style="text-align: center">free</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!--Firebase Libraries-->
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBX-u04UPakEx0C5dmSv6FUHVHUgTSQcQw",
+      authDomain: "myproject-d1dfe.firebaseapp.com",
+      projectId: "myproject-d1dfe",
+      storageBucket: "myproject-d1dfe.appspot.com",
+      messagingSenderId: "701403057976",
+      appId: "1:701403057976:web:0fa1fd121ac40330b43bcd",
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // for testing
+    // firebase.database().ref("p1").set({
+    //   isOccupied: false,
+    // });
+    // firebase.database().ref("p2").set({
+    //   isOccupied: true,
+    // });
+    // firebase.database().ref("p3").set({
+    //   isOccupied: false,
+    // });
+    // firebase.database().ref("p4").set({
+    //   isOccupied: false,
+    // });
+
+    // handle p1
+    firebase
+      .database()
+      .ref("p1")
+      .on("value", function (snapshot) {
+        const isOccupied1 = snapshot.val().isOccupied;
+
+        if (isOccupied1 === true) {
+          document
+            .getElementById("p1")
+            .getElementsByTagName("div")[0]
+            .getElementsByTagName("h5")[0].innerHTML = "Occupied";
+
+          document.getElementById("p1").classList.remove("light-green");
+          document.getElementById("p1").classList.add("light-red");
+        } else {
+          document
+            .getElementById("p1")
+            .getElementsByTagName("div")[0]
+            .getElementsByTagName("h5")[0].innerHTML = "Not Occupied";
+
+          document.getElementById("p1").classList.remove("light-red");
+          document.getElementById("p1").classList.add("light-green");
+        }
+      });
+
+    // handle p2
+    firebase
+      .database()
+      .ref("p2")
+      .on("value", function (snapshot) {
+        const isOccupied2 = snapshot.val().isOccupied;
+
+        if (isOccupied2 === true) {
+          document
+            .getElementById("p2")
+            .getElementsByTagName("div")[0]
+            .getElementsByTagName("h5")[0].innerHTML = "Occupied";
+
+          document.getElementById("p2").classList.remove("light-green");
+          document.getElementById("p2").classList.add("light-red");
+        } else {
+          document
+            .getElementById("p2")
+            .getElementsByTagName("div")[0]
+            .getElementsByTagName("h5")[0].innerHTML = "Not Occupied";
+
+          document.getElementById("p2").classList.remove("light-red");
+          document.getElementById("p2").classList.add("light-green");
+        }
+      });
+
+    // handle p3
+    firebase
+      .database()
+      .ref("p3")
+      .on("value", function (snapshot) {
+        const isOccupied3 = snapshot.val().isOccupied;
+
+        if (isOccupied3 === true) {
+          document
+            .getElementById("p3")
+            .getElementsByTagName("div")[0]
+            .getElementsByTagName("h5")[0].innerHTML = "Occupied";
+
+          document.getElementById("p3").classList.remove("light-green");
+          document.getElementById("p3").classList.add("light-red");
+        } else {
+          document
+            .getElementById("p3")
+            .getElementsByTagName("div")[0]
+            .getElementsByTagName("h5")[0].innerHTML = "Not Occupied";
+
+          document.getElementById("p3").classList.remove("light-red");
+          document.getElementById("p3").classList.add("light-green");
+        }
+      });
+    // handle p4
+    firebase
+      .database()
+      .ref("p4")
+      .on("value", function (snapshot) {
+        const isOccupied4 = snapshot.val().isOccupied;
+
+        if (isOccupied4 === true) {
+          document
+            .getElementById("p4")
+            .getElementsByTagName("div")[0]
+            .getElementsByTagName("h5")[0].innerHTML = "Occupied";
+
+          document.getElementById("p4").classList.remove("light-green");
+          document.getElementById("p4").classList.add("light-red");
+        } else {
+          document
+            .getElementById("p4")
+            .getElementsByTagName("div")[0]
+            .getElementsByTagName("h5")[0].innerHTML = "Not Occupied";
+
+          document.getElementById("p4").classList.remove("light-red");
+          document.getElementById("p4").classList.add("light-green");
+        }
+      });
+  </script>
+</html>
