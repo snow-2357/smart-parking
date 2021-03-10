@@ -4,10 +4,10 @@
 #include <WiFi.h>
 #include <FirebaseESP32.h>
 
-#define WIFI_SSID "A#"
-#define WIFI_PASSWORD "1qaz2wsx"
-#define FIREBASE_HOST "myproject-d1dfe-default-rtdb.firebaseio.com"
-#define FIREBASE_AUTH "QwDv3H18kq70pOPmn2wwhlgsbxegjpzu3FnfufbC"
+#define WIFI_SSID "**"
+#define WIFI_PASSWORD "**"
+#define FIREBASE_HOST "**"
+#define FIREBASE_AUTH "**"
 
 // Lora radio config for TTGO T-Beam v1.1 board. Different for other boards
 const int loraCsPin = 18;    // LoRa radio chip select
